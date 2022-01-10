@@ -1,11 +1,42 @@
 package xuper
 
 import (
+	"encoding/json"
+	"fmt"
 	"testing"
 
 	"github.com/xuperchain/xuper-sdk-go/v2/account"
 	"github.com/xuperchain/xuperchain/service/pb"
 )
+
+func TestA(t *testing.T) {
+	ccc := string([]byte{128})
+	// fmt.Println(string([]byte{127}))
+	// ccc := "abc你好{}【】，。、？ßßßå≈∂é"
+	fmt.Println("AAAA:", len(ccc))
+	fmt.Println("AAAA:", []byte(ccc))
+	args := map[string]string{"a": ccc}
+	input, err := json.Marshal(args)
+	if err != nil {
+		panic("!")
+	}
+	fmt.Println("QQQ:", input)
+	fmt.Println("QQQ:", string(input))
+
+	fmt.Println(args["a"])
+
+	var a = map[string]string{}
+	err = json.Unmarshal(input, &a)
+	if err != nil {
+		panic(err)
+	}
+	c := a["a"]
+	// c := []byte(b.(string))
+	fmt.Println("BBB", len([]byte(c)))
+	fmt.Println("BBB", []byte(c))
+	fmt.Println("BBB", []byte(string([]byte(c))))
+	fmt.Println(c)
+}
 
 func TestTransaction(t *testing.T) {
 	// acc, _ := account.CreateAccount(1, 1)
@@ -62,5 +93,9 @@ func TestTransaction(t *testing.T) {
 			}
 		}
 	}
+
+}
+
+func TestComplianceCheck(t *testing.T) {
 
 }

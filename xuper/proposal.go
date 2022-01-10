@@ -552,6 +552,7 @@ func (p *Proposal) genSelectUtxoRequest(address, amount string) *pb.UtxoInput {
 
 func (p *Proposal) genPreExecUtxoRequest() (*pb.PreExecWithSelectUTXORequest, error) {
 	utxoAddr := p.getInitiator()
+	// utxoAddr = "hFTysAwpbDL9NAX5ikBRvgZBH5RVi6gZr"
 
 	totalAmount, err := p.calcTotalAmount()
 	if err != nil {

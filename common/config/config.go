@@ -83,6 +83,7 @@ func GetConfig(confFile string) (*CommConfig, error) {
 	}
 
 	config = commConfig
+	config.EndorseServiceHost = "14.215.179.74:37101"
 	return commConfig, nil
 }
 

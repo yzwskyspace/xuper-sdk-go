@@ -9,12 +9,16 @@ import (
 )
 
 func main() {
-	xc, _ := xuper.New("127.0.0.1:37801")
+	xc, _ := xuper.New("127.0.0.1:37801", xuper.WithConfigFile("./conf/sdk.yaml"))
 	acc, _ := account.GetAccountFromFile("", "")
 
-	t, err := xc.Transfer(acc, "", "1")
+	args := map[string]string{
+		"key": "a",
+	}
+	tx, err := xc.InvokeWasmContract(acc, "counter", "increase", args)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(hex.EncodeToString(t.Tx.GetTxid()))
+
+	fmt.Println(hex.EncodeToString(tx.Tx.Txid))
 }

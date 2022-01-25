@@ -17,7 +17,7 @@ import (
 	"github.com/xuperchain/xuper-sdk-go/pb"
 	"github.com/xuperchain/xuper-sdk-go/xchain"
 
-	"github.com/xuperchain/crypto/core/utils"
+	"github.com/xuperchain/crypto/common/utils"
 )
 
 // Trans transaction structure
